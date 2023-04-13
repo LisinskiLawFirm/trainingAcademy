@@ -1,95 +1,6 @@
 <template>
-  <div v-if="loggedIn == false" style="margin-top: 140px;">
-    <v-sheet width="300" class="mx-auto">
-
-    <div style="text-align: center;">
-      <h2>LLF Academy</h2>
-    </div>
-
-    <br><br>
-
-    <v-form ref="form">
-      <v-text-field
-        label="Email"
-        required
-        outlined
-      ></v-text-field>
-
-      <v-text-field
-        label="Password"
-        required
-        outlined
-        type="password"
-      ></v-text-field>
-
-      <div class="d-flex flex-column">
-        <v-btn
-          color="primary"
-          class="mt-4"
-          block
-          @click="loggedIn = true;"
-        >
-          Login
-        </v-btn>
-
-      
-      </div>
-    </v-form>
-  </v-sheet>
-  </div>
-
-
-  <div v-else>
-    <v-app-bar color="primary" app dark>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-app-bar-title>LLF Training Academy</v-app-bar-title>
-    </v-app-bar>
-
-    <v-navigation-drawer app v-model="drawer" width="300">
-      <v-list-item>
-        <v-list-item-content>
-          <div style="display: flex;">
-            <div style="margin-right: 15px;">
-              <v-avatar style="max-width: 20px;">
-                <v-img
-                  src="https://cdn.vuetifyjs.com/images/john.jpg"
-                  alt="John"
-                ></v-img>
-              </v-avatar>
-            </div>
-            <div style="top:3px; position: relative;">
-              <v-list-item-title class="text-h6">Oscar Araya</v-list-item-title>
-              <v-list-item-subtitle>oaraya@lisinskifirm.com</v-list-item-subtitle>
-            </div>
-          </div>
-        </v-list-item-content>
-      </v-list-item>
-      <v-divider></v-divider>
-      <v-list dense nav>
-        <v-list-item v-for="item in items" :key="item.title" link @click="selectedView=item.title; takingTest = false;">
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-
-      <div style="position: absolute; bottom: 0px; width: 300px;">
-        <v-list dense nav>
-          <v-list-item v-for="item in items2" :key="item.title" link @click="downItem(item.title)">
-            <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </div>
-    </v-navigation-drawer>
+  <div>
+    <navigation-bar-component></navigation-bar-component>
     
     <div @click="closeDialog">
       <div v-if="selectedView == 'Profile' && takingTest==false" style="margin:20px;">
@@ -304,10 +215,12 @@
 
 <script>
 
+import NavigationBarComponent from '@/components/NavigationBarComponent.vue';
 
 export default {
   name: 'MainView',
   components: {
+    NavigationBarComponent,
   },
   data: () => ({
     labels: [

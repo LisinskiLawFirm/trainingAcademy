@@ -1,306 +1,36 @@
 <template>
-    <div v-if="loggedIn == false" style="margin-top: 140px;">
-      <v-sheet width="300" class="mx-auto">
-  
-      <div style="text-align: center;">
-        <h2>LLF Academy</h2>
-      </div>
-  
-      <br><br>
-  
-      <v-form ref="form">
-        <v-text-field
-          label="Email"
-          required
-          outlined
-        ></v-text-field>
-  
-        <v-text-field
-          label="Password"
-          required
-          outlined
-          type="password"
-        ></v-text-field>
-  
-        <div class="d-flex flex-column">
-          <v-btn
-            color="primary"
-            class="mt-4"
-            block
-            @click="loggedIn = true;"
-          >
-            Login
-          </v-btn>
-  
-        
-        </div>
-      </v-form>
-    </v-sheet>
+    <div style="text-align: center;">
+      <h2>LLF Academyddddd</h2>
     </div>
-  
-  
-    <div v-else>
-      <v-app-bar color="primary" app dark>
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-app-bar-title>LLF Training Academy</v-app-bar-title>
-      </v-app-bar>
-  
-      <v-navigation-drawer app v-model="drawer" width="300">
-        <v-list-item>
-          <v-list-item-content>
-            <div style="display: flex;">
-              <div style="margin-right: 15px;">
-                <v-avatar style="max-width: 20px;">
-                  <v-img
-                    src="https://cdn.vuetifyjs.com/images/john.jpg"
-                    alt="John"
-                  ></v-img>
-                </v-avatar>
-              </div>
-              <div style="top:3px; position: relative;">
-                <v-list-item-title class="text-h6">Oscar Araya</v-list-item-title>
-                <v-list-item-subtitle>oaraya@lisinskifirm.com</v-list-item-subtitle>
-              </div>
-            </div>
-          </v-list-item-content>
-        </v-list-item>
-        <v-divider></v-divider>
-        <v-list dense nav>
-          <v-list-item v-for="item in items" :key="item.title" link @click="selectedView=item.title; takingTest = false;">
-            <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-icon>
-  
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-  
-        <div style="position: absolute; bottom: 0px; width: 300px;">
-          <v-list dense nav>
-            <v-list-item v-for="item in items2" :key="item.title" link @click="downItem(item.title)">
-              <v-list-item-icon>
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </div>
-      </v-navigation-drawer>
-      
-      <div @click="closeDialog">
-        <div v-if="selectedView == 'Profile' && takingTest==false" style="margin:20px;">
-          <v-expansion-panels>
-  
-            <v-expansion-panel>
-              <v-expansion-panel-header style="font-weight: bold;">
-                Phone Operator
-              </v-expansion-panel-header>
-              <v-expansion-panel-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                <br>
-                <v-sparkline
-                  style="margin-left:100px; margin-right: 100px;"
-                  :labels="labels"
-                  :value="value"
-                  color="primary"
-                  line-width="2"
-                  padding="16"
-                  height="50"
-                ></v-sparkline>
-              </v-expansion-panel-content>
-          </v-expansion-panel>
-  
-          <v-expansion-panel>
-              <v-expansion-panel-header style="font-weight: bold;">
-                Intake
-              </v-expansion-panel-header>
-              <v-expansion-panel-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                <br>
-                <v-sparkline
-                  style="margin-left:100px; margin-right: 100px;"
-                  :labels="labels"
-                  :value="value"
-                  color="primary"
-                  line-width="2"
-                  padding="16"
-                  height="50"
-                ></v-sparkline>
-              </v-expansion-panel-content>
-          </v-expansion-panel>
-        
-          </v-expansion-panels>
-        
-        </div>
-  
-  
-        <div v-if="selectedView!='Profile' && selectedView!='Logout' && takingTest==false" style="margin:20px;">
-          <h2>{{selectedView}}</h2>
-          <br>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          <br><br>
-          <v-expansion-panels>
-            <v-expansion-panel>
-              <v-expansion-panel-header style="font-weight: bold;">
-                First content
-              </v-expansion-panel-header>
-              <v-expansion-panel-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                <br><br>
-                <video src="http://iandevlin.github.io/mdn/video-player/video/tears-of-steel-battle-clip-medium.mp4" id="video-container" width="70%" controls></video>
-                <br><br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                <br><br>
-                <v-img
-                  height="250"
-                  width="400"
-                  src="https://picsum.photos/id/11/500/300"
-                ></v-img>
-                <br>
-                <v-btn color="primary" @click="takingTest = true">
-                  Take test
-                </v-btn>
-              </v-expansion-panel-content>
-            </v-expansion-panel>
-  
-            <v-expansion-panel>
-              <v-expansion-panel-header style="font-weight: bold;">
-                Second content
-              </v-expansion-panel-header>
-              <v-expansion-panel-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                <br><br>
-                <video src="http://iandevlin.github.io/mdn/video-player/video/tears-of-steel-battle-clip-medium.mp4" id="video-container" width="70%" controls></video>
-                <br><br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                <br><br>
-                <v-img
-                  height="250"
-                  width="400"
-                  src="https://picsum.photos/id/11/500/300"
-                ></v-img>
-                <br>
-                <v-btn color="primary">
-                  Take test
-                </v-btn>
-              </v-expansion-panel-content>
-            </v-expansion-panel>
-  
-            <v-expansion-panel>
-              <v-expansion-panel-header style="font-weight: bold;">
-                Third content
-              </v-expansion-panel-header>
-              <v-expansion-panel-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                <br><br>
-                <iframe height="400" src="https://docs.google.com/viewerng/viewer?url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true" frameborder="0" width="100%"></iframe>            
-              </v-expansion-panel-content>
-            </v-expansion-panel>
-          </v-expansion-panels>
-        </div>
-  
-        <div v-if="takingTest" style="margin:20px;">   
-          <h2>Test 1</h2>
-          <br>
-          <label>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </label> 
-          <br><br>
-          <v-divider></v-divider>
-          <br>
-          <label>
-            <strong>QUESTION 1: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </label> 
-          <br><br>
-          <v-select
-            v-model="e6"
-            :items="states"
-            :menu-props="{ maxHeight: '400' }"
-            label="Answer 1"
-            multiple
-            outlined
-          ></v-select>
-  
-          <v-divider></v-divider>
-          <br>
-          <label>
-            <strong>QUESTION 2: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </label> 
-          <br><br>
-          <v-select
-            v-model="e7"
-            :items="example"
-            :menu-props="{ maxHeight: '400' }"
-            label="Answer 2"
-            outlined
-          ></v-select>
-  
-          <v-divider></v-divider>
-          <br>
-          <label>
-            <strong>QUESTION 3: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </label> 
-          <br><br>
-          <v-textarea outlined label="Answer 3">
-  
-          </v-textarea>
-  
-          <v-divider></v-divider>
-          <br><br>
-          <v-btn color="primary" @click="openTestDialog = true;">
-            Finish test
-          </v-btn>
-          <br><br>
-        </div>
-  
-  
-        <v-dialog
-        v-model="openTestDialog"
-        width="auto"
-        persistent
-      >
-  
-        <v-card>
-          <v-card-title>
-            Test 1
-          </v-card-title>
-          <v-card-text>
-            <br>
-            <strong>Right answers: 3/9</strong>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn color="primary" @click="takingTest = false; openTestDialog = false">Finish test</v-btn>
-            <v-btn color="primary" @click="takingTest = true; openTestDialog = false">Retry test</v-btn>
-          </v-card-actions>
-          <br>
-        </v-card>
-      </v-dialog>
-  
-      <v-dialog
-        v-model="logoutDialog"
-        width="auto"
-        persistent
-      >
-  
-        <v-card>
-          <br>
-          <v-card-actions>
-            <v-btn color="primary">Logout</v-btn>
-            <v-btn color="primary" @click="logoutDialog = false; selectedView = 'Phone Operator'">Stay</v-btn>
-          </v-card-actions>
-          <br>
-        </v-card>
-      </v-dialog>
-  
+
+    <br><br>
+
+      <v-text-field
+        label="Email"
+        required
+        outlined
+      ></v-text-field>
+
+      <v-text-field
+        label="Password"
+        required
+        outlined
+        type="password"
+      ></v-text-field>
+
+      <div class="d-flex flex-column">
+        <v-btn
+          color="primary"
+          class="mt-4"
+          block
+          @click="loggedIn = true;"
+        >
+          Login
+        </v-btn>
       </div>
   
   
-    </div>
-  </template>
+</template>
   
   <script>
   
@@ -310,6 +40,11 @@
     components: {
     },
     data: () => ({
+      controlVariables:
+      {
+        loggedIn: true,
+      },
+
       labels: [
           'Test 1',
           'Test 2',
