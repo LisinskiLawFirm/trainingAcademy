@@ -71,7 +71,7 @@
 
             <v-expansion-panel>
               <v-expansion-panel-header class='expansionPanelHeaderLabel' v-if='controlVariables.currentLanguage == "ENG"'>Training with Rea (I)</v-expansion-panel-header>
-              <v-expansion-panel-header class='expansionPanelHeaderLabel' v-else>Entrenamiento Rea (I)</v-expansion-panel-header>
+              <v-expansion-panel-header class='expansionPanelHeaderLabel' v-else>Entrenamiento con Rea (I)</v-expansion-panel-header>
               <v-expansion-panel-content>
                 <div class='videoAndNotesContainer'>
                   <div class='videoContainer'>
@@ -85,6 +85,49 @@
                 </div>
               </v-expansion-panel-content>
             </v-expansion-panel>
+
+            <v-expansion-panel>
+              <v-expansion-panel-header class='expansionPanelHeaderLabel' v-if='controlVariables.currentLanguage == "ENG"'>Humanitarian options</v-expansion-panel-header>
+              <v-expansion-panel-header class='expansionPanelHeaderLabel' v-else>Opciones humanitarias</v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <div class='videoAndNotesContainer'>
+                  <div class='videoContainer'>
+                    <video width='640' height='400' controls='controls'>
+                      <source src='https://www.dropbox.com/s/rkvk7w2nkovsro7/7.%20Humanitarian%20Options.mp4?raw=1' type='video/mp4'/>
+                    </video>
+                  </div>
+                  <div class='notesContainer'>
+                    <v-textarea class='notesInput' height='400' color='#C5B47E' append-icon='mdi-content-copy' v-model='userInputs.humanitarianOptionsNotesInput' @click:append='copyToClipboard(userInputs.humanitarianOptionsNotesInput)' outlined no-resize></v-textarea>
+                  </div>
+                </div>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+
+            <v-expansion-panel>
+              <v-expansion-panel-header class='expansionPanelHeaderLabel' v-if='controlVariables.currentLanguage == "ENG"'>Additional information</v-expansion-panel-header>
+              <v-expansion-panel-header class='expansionPanelHeaderLabel' v-else>Información adicional</v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <div class='videoAndNotesContainer'>
+                  <div class='videoContainer'>
+                    <video width='640' height='400' controls='controls'>
+                      <source src='https://www.dropbox.com/s/22iwf766zvw92o2/11.%20Additional%20Info.mp4?raw=1' type='video/mp4'/>
+                    </video>
+                  </div>
+                  <div class='notesContainer'>
+                    <v-textarea class='notesInput' height='400' color='#C5B47E' append-icon='mdi-content-copy' v-model='userInputs.additionalInformationNotesInput' @click:append='copyToClipboard(userInputs.humanitarianOptionsNotesInput)' outlined no-resize></v-textarea>
+                  </div>
+                </div>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+
+            <v-expansion-panel>
+              <v-expansion-panel-header class='expansionPanelHeaderLabel' v-if='controlVariables.currentLanguage == "ENG"'>Intake appointment script</v-expansion-panel-header>
+              <v-expansion-panel-header class='expansionPanelHeaderLabel' v-else>Intake appointment script</v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <br><br>
+                <iframe height='400' width='100%' frameborder='0' src='../assets/documents/intakeAppointmentScript.pdf&embedded=true'></iframe>            
+              </v-expansion-panel-content>
+            </v-expansion-panel>
             
 
           </v-expansion-panels>
@@ -95,16 +138,6 @@
       </v-expansion-panel>
 
 
-      <v-expansion-panel>
-        <v-expansion-panel-header style="font-weight: bold;">
-          Third content
-        </v-expansion-panel-header>
-        <v-expansion-panel-content>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          <br><br>
-          <iframe height="400" src="https://docs.google.com/viewerng/viewer?url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true" frameborder="0" width="100%"></iframe>            
-        </v-expansion-panel-content>
-      </v-expansion-panel>
     </v-expansion-panels>
   </div>
 </template>
@@ -152,6 +185,8 @@
         consularProcessingNotesInput: '',
         trainingWithAngelAttorneyINotesInput: '',
         trainingWithReaINotesInput: '',
+        humanitarianOptionsNotesInput: '',
+        additionalInformationNotesInput: '',
       }
     }),
 
