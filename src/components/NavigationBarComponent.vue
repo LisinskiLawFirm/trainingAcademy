@@ -28,31 +28,30 @@
 
       <v-divider></v-divider>
 
-      <v-list dense nav>
-        <v-list-item v-for='navigationBarItem in displayedPageContent.navigationBarItems' :key='navigationBarItem.title' @click='openNavigationBarCategory(navigationBarItem.title)'>
+      <v-list dense>
+        <v-list-item v-for='navigationBarCategory in displayedPageContent.navigationBarCategories' :key='navigationBarCategory.title' @click='openNavigationBarCategory(navigationBarCategory.title)'>
           <v-list-item-icon>
-            <v-icon>{{navigationBarItem.icon}}</v-icon>
+            <v-icon>{{navigationBarCategory.icon}}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>{{navigationBarItem.title}}</v-list-item-title>
+            <v-list-item-title>{{navigationBarCategory.title}}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
 
-      <div class='navigationBarBottomCategoriesContainer'>
-        <v-list dense nav>
-          <v-list-item v-for="item in items2" :key="item.title" link @click="downItem(item.title)">
+      <div class='navigationBarBottomOptionsContainer'>
+        <v-list dense>
+          <v-list-item v-for='navigationBarOption in displayedPageContent.navigationBarOptions' :key='navigationBarOption.title' @click='openNavigationBarOption(navigationBarOption.title)'>
             <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
+              <v-icon>{{navigationBarOption.icon}}</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
+              <v-list-item-title>{{navigationBarOption.title}}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
       </div>
     </v-navigation-drawer>
-
   </div>
 </template>
 
@@ -70,7 +69,7 @@
     top: 3px; 
     position: relative;
   }
-  .navigationBarBottomCategoriesContainer{
+  .navigationBarBottomOptionsContainer{
     position: absolute; 
     bottom: 0px; 
     width: 300px;
@@ -94,27 +93,24 @@
         profilePicture: 'https://cdn.vuetifyjs.com/images/john.jpg',
         userName: 'Oscar Araya',
         userEmail: 'oaraya@lisinskifirm.com',
-
       },
 
       pageContentSpanish: 
       {
         navigationBarTitle: 'Academia de Entrenamiento LLF',
-        navigationBarItems: [{title: 'Phone Operator', icon: 'mdi-phone' }, {title: 'Intake', icon: 'mdi-sale' }, {title: 'Sign-Up', icon: 'mdi-content-save' }, {title: 'Cliente Service Cordinator (CSC)', icon: 'mdi-progress-check'}]
+        navigationBarCategories: [{title: 'Phone Operator', icon: 'mdi-phone'}, {title: 'Intake', icon: 'mdi-sale'}, {title: 'Sign-Up', icon: 'mdi-content-save'}, {title: 'Cliente Service Cordinator (CSC)', icon: 'mdi-progress-check'}],
+        navigationBarOptions: [{title: 'Perfil', icon: 'mdi-account'}, {title: 'Cerrar sesión', icon: 'mdi-logout'}]
       },
 
       pageContentEnglish:
       {
         navigationBarTitle: 'LLF Training Academy',
-        navigationBarItems: [{title: 'Phone Operator', icon: 'mdi-phone' }, {title: 'Intake', icon: 'mdi-sale' }, {title: 'Sign-Up', icon: 'mdi-content-save' }, {title: 'Cliente Service Cordinator (CSC)', icon: 'mdi-progress-check'}]
+        navigationBarCategories: [{title: 'Phone Operator', icon: 'mdi-phone'}, {title: 'Intake', icon: 'mdi-sale'}, {title: 'Sign-Up', icon: 'mdi-content-save'}, {title: 'Cliente Service Cordinator (CSC)', icon: 'mdi-progress-check'}],
+        navigationBarOptions: [{title: 'Profile', icon: 'mdi-account'}, {title: 'Log Out', icon: 'mdi-logout'}]
       },
 
       displayedPageContent: {}
     }),
-
-    created(){
-      this.displayedPageContent = this.pageContentEnglish;
-    },
 
     methods: {
       openCloseNavigationBarDialog(){
@@ -122,10 +118,27 @@
       },
 
       openNavigationBarCategory(navigationBarCategory){
-        /*selectedView=item.title; 
-        takingTest = false;*/
-        console.log(navigationBarCategory);
+        this.$root.$emit('openNavigationBarCategory', navigationBarCategory);
+      },
+
+      openNavigationBarOption(navigationBarOption){
+        console.log(navigationBarOption);
       }
+    },
+
+    created(){
+      this.displayedPageContent = this.pageContentEnglish;
+    },
+
+    mounted: function () { 
+      this.$root.$on('switchLanguage', (newLanguage) => {
+        if (newLanguage == 'ENG') {
+          this.displayedPageContent = this.pageContentEnglish;
+        } else {
+          this.displayedPageContent = this.pageContentSpanish;
+        }
+      })
     }
+    
   }
 </script>

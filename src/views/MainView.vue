@@ -1,230 +1,41 @@
 <template>
   <div>
+    <language-switch-component></language-switch-component>
     <navigation-bar-component></navigation-bar-component>
     
-    <div @click="closeDialog">
-      <div v-if="selectedView == 'Profile' && takingTest==false" style="margin:20px;">
-        <v-expansion-panels>
-
-          <v-expansion-panel>
-            <v-expansion-panel-header style="font-weight: bold;">
-              Phone Operator
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              <br>
-              <v-sparkline
-                style="margin-left:100px; margin-right: 100px;"
-                :labels="labels"
-                :value="value"
-                color="primary"
-                line-width="2"
-                padding="16"
-                height="50"
-              ></v-sparkline>
-            </v-expansion-panel-content>
-        </v-expansion-panel>
-
-        <v-expansion-panel>
-            <v-expansion-panel-header style="font-weight: bold;">
-              Intake
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              <br>
-              <v-sparkline
-                style="margin-left:100px; margin-right: 100px;"
-                :labels="labels"
-                :value="value"
-                color="primary"
-                line-width="2"
-                padding="16"
-                height="50"
-              ></v-sparkline>
-            </v-expansion-panel-content>
-        </v-expansion-panel>
-      
-        </v-expansion-panels>
-      
-      </div>
-
-
-      <div v-if="selectedView!='Profile' && selectedView!='Logout' && takingTest==false" style="margin:20px;">
-        <h2>{{selectedView}}</h2>
-        <br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        <br><br>
-        <v-expansion-panels>
-          <v-expansion-panel>
-            <v-expansion-panel-header style="font-weight: bold;">
-              First content
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              <br><br>
-              <video src="http://iandevlin.github.io/mdn/video-player/video/tears-of-steel-battle-clip-medium.mp4" id="video-container" width="70%" controls></video>
-              <br><br>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              <br><br>
-              <v-img
-                height="250"
-                width="400"
-                src="https://picsum.photos/id/11/500/300"
-              ></v-img>
-              <br>
-              <v-btn color="primary" @click="takingTest = true">
-                Take test
-              </v-btn>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-
-          <v-expansion-panel>
-            <v-expansion-panel-header style="font-weight: bold;">
-              Second content
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              <br><br>
-              <video src="http://iandevlin.github.io/mdn/video-player/video/tears-of-steel-battle-clip-medium.mp4" id="video-container" width="70%" controls></video>
-              <br><br>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              <br><br>
-              <v-img
-                height="250"
-                width="400"
-                src="https://picsum.photos/id/11/500/300"
-              ></v-img>
-              <br>
-              <v-btn color="primary">
-                Take test
-              </v-btn>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-
-          <v-expansion-panel>
-            <v-expansion-panel-header style="font-weight: bold;">
-              Third content
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              <br><br>
-              <iframe height="400" src="https://docs.google.com/viewerng/viewer?url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true" frameborder="0" width="100%"></iframe>            
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
-      </div>
-
-      <div v-if="takingTest" style="margin:20px;">   
-        <h2>Test 1</h2>
-        <br>
-        <label>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </label> 
-        <br><br>
-        <v-divider></v-divider>
-        <br>
-        <label>
-          <strong>QUESTION 1: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </label> 
-        <br><br>
-        <v-select
-          v-model="e6"
-          :items="states"
-          :menu-props="{ maxHeight: '400' }"
-          label="Answer 1"
-          multiple
-          outlined
-        ></v-select>
-
-        <v-divider></v-divider>
-        <br>
-        <label>
-          <strong>QUESTION 2: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </label> 
-        <br><br>
-        <v-select
-          v-model="e7"
-          :items="example"
-          :menu-props="{ maxHeight: '400' }"
-          label="Answer 2"
-          outlined
-        ></v-select>
-
-        <v-divider></v-divider>
-        <br>
-        <label>
-          <strong>QUESTION 3: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </label> 
-        <br><br>
-        <v-textarea outlined label="Answer 3">
-
-        </v-textarea>
-
-        <v-divider></v-divider>
-        <br><br>
-        <v-btn color="primary" @click="openTestDialog = true;">
-          Finish test
-        </v-btn>
-        <br><br>
-      </div>
-
-
-      <v-dialog
-      v-model="openTestDialog"
-      width="auto"
-      persistent
-    >
-
-      <v-card>
-        <v-card-title>
-          Test 1
-        </v-card-title>
-        <v-card-text>
-          <br>
-          <strong>Right answers: 3/9</strong>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn color="primary" @click="takingTest = false; openTestDialog = false">Finish test</v-btn>
-          <v-btn color="primary" @click="takingTest = true; openTestDialog = false">Retry test</v-btn>
-        </v-card-actions>
-        <br>
-      </v-card>
-    </v-dialog>
-
-    <v-dialog
-      v-model="logoutDialog"
-      width="auto"
-      persistent
-    >
-
-      <v-card>
-        <br>
-        <v-card-actions>
-          <v-btn color="primary">Logout</v-btn>
-          <v-btn color="primary" @click="logoutDialog = false; selectedView = 'Phone Operator'">Stay</v-btn>
-        </v-card-actions>
-        <br>
-      </v-card>
-    </v-dialog>
-
+    <div class='contentContainer'>
+      <intake-team-component v-if='controlVariables.currentNavigationBarCategory == "Intake"'></intake-team-component>
     </div>
-
 
   </div>
 </template>
 
+<style scoped>
+  .contentContainer{
+    margin: 20px;
+  }
+</style>
+
 <script>
 
 import NavigationBarComponent from '@/components/NavigationBarComponent.vue';
+import LanguageSwitchComponent from '@/components/LanguageSwitchComponent.vue';
+import IntakeTeamComponent from '@/components/IntakeTeamComponent.vue';
 
 export default {
   name: 'MainView',
   components: {
     NavigationBarComponent,
+    LanguageSwitchComponent,
+    IntakeTeamComponent
   },
   data: () => ({
-    labels: [
-        'Test 1',
+    controlVariables: 
+    {
+      currentNavigationBarCategory: '',
+    },
+
+    labels: ['Test 1',
         'Test 2',
         'Test 3',
         'Test 4',
@@ -277,6 +88,7 @@ export default {
 
       
   }),
+
   methods: {
     closeDialog(){
       this.drawer = false;
@@ -290,6 +102,16 @@ export default {
         this.takingTest = false; 
       }
     }
+  },
+
+  created(){
+    this.controlVariables.currentNavigationBarCategory = 'Intake';
+  },
+  
+  mounted: function () { 
+    this.$root.$on('openNavigationBarCategory', (newNavigationBarCategory) => {
+      this.controlVariables.currentNavigationBarCategory = newNavigationBarCategory;
+    })
   }
 }
 </script>
