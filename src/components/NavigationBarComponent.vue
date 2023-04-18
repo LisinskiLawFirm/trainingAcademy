@@ -85,7 +85,7 @@
     ({
       controlVariables:
       {
-        navigationBarDialog: false,
+        navigationBarDialog: true,
       },
 
       backendContent:
@@ -115,6 +115,7 @@
     methods: {
       openCloseNavigationBarDialog(){
         this.controlVariables.navigationBarDialog = !this.controlVariables.navigationBarDialog;
+        this.$root.$emit('navigationBarDialog', this.controlVariables.navigationBarDialog);
       },
 
       openNavigationBarCategory(navigationBarCategory){
@@ -139,6 +140,6 @@
         }
       })
     }
-    
+
   }
 </script>
