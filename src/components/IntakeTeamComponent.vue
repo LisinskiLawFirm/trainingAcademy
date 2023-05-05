@@ -5,8 +5,8 @@
 
     <h2 class='categoryNameLabel'>Intake</h2>
     <br>
-    <v-expansion-panels>
 
+    <v-expansion-panels>
       <v-expansion-panel>
         <v-expansion-panel-header class='expansionPanelHeaderLabel' v-if='controlVariables.currentLanguage == "ENG"'>Day 1</v-expansion-panel-header>
         <v-expansion-panel-header class='expansionPanelHeaderLabel' v-else>Día 1</v-expansion-panel-header>
@@ -212,8 +212,8 @@
             </v-expansion-panel>
 
             <v-expansion-panel>
-              <v-expansion-panel-header class='expansionPanelHeaderLabel expansionPanelHeaderQuizLabel' v-if='controlVariables.currentLanguage == "ENG"' @click='openTest(1)'>Quiz (I): introduction to inmigration law</v-expansion-panel-header>
-              <v-expansion-panel-header class='expansionPanelHeaderLabel expansionPanelHeaderQuizLabel' v-else @click='openTest(1)'>Quiz (I): introduction a la legislación de inmigración</v-expansion-panel-header>
+              <v-expansion-panel-header class='expansionPanelHeaderLabel expansionPanelHeaderQuizLabel' v-if='controlVariables.currentLanguage == "ENG"' @click='openQuizComponent("Day I")'>Quiz (I): introduction to inmigration law</v-expansion-panel-header>
+              <v-expansion-panel-header class='expansionPanelHeaderLabel expansionPanelHeaderQuizLabel' v-else @click='openQuizComponent("Day I")'>Quiz (I): introducción a la legislación de inmigración</v-expansion-panel-header>
             </v-expansion-panel>
       
           </v-expansion-panels>
@@ -857,9 +857,9 @@
         <v-expansion-panel-header class='expansionPanelHeaderLabel expansionPanelHeaderQuizLabel' v-if='controlVariables.currentLanguage == "ENG"' @click='openTest(6)'>Quiz (VI): general recap</v-expansion-panel-header>
         <v-expansion-panel-header class='expansionPanelHeaderLabel expansionPanelHeaderQuizLabel' v-else @click='openTest(6)'>Quiz (VI): resumen general</v-expansion-panel-header>
       </v-expansion-panel>
-
-
     </v-expansion-panels>
+
+    <quiz-component></quiz-component>
   </div>
 </template>
   
@@ -896,9 +896,10 @@
 </style>
   
 <script>
-
+import QuizComponent from '@/components/QuizComponent.vue';
   export default {
     components: {
+      QuizComponent
     },
 
     name: 'IntakeTeamComponent',
@@ -941,6 +942,518 @@
         PIPNotesInput: '',
         juvenileVISANotesInput: '',
         generalNotesNotesInput: '',
+      },
+
+      quizContent: 
+      {
+        'Day I': 
+        {
+          'pageContentEnglish': 
+          {
+            'title': 'Quiz (I): introduction to inmigration law',
+            'quizItems': 
+            [
+              {
+                type: 'Single selection',
+                title: 'Lawful Permanent Residency (LPR) is the equivalent of having your Green Card?',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'True',
+                    correctAnswer: true
+                  },
+                  {
+                    title: 'False',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: 'After how many years can a permanent resident become a legal citizen?',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: '2',
+                    correctAnswer: false
+                  },
+                  {
+                    title: '3 or 5 (depends)',
+                    correctAnswer: true
+                  },
+                  {
+                    title: '5',
+                    correctAnswer: false
+                  },
+                  {
+                    title: '7',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: 'What does AOS stand for?',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'Accomodation of Standing',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'Adjustment of Status',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'Adjustment of Standing',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'Authorization of Status',
+                    correctAnswer: true
+                  }
+                ]
+              },
+              {
+                type: 'Writing',
+                title: 'What does CP stand for?',
+                selectedOption: ''
+              },
+              {
+                type: 'Single selection',
+                title: 'What is the main difference between AOS and CP?',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'AOS inside the US, CP outside the US',
+                    correctAnswer: true
+                  },
+                  {
+                    title: 'CP inside the US, AOS outside the US',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Multiple selection',
+                title: 'What is a waive through?',
+                selectedOption: [],
+                options:
+                [
+                  {
+                    title: 'Applicant was "waived through" inspection point by immigration officer',
+                    correctAnswer: true
+                  },
+                  {
+                    title: 'Applicant entered the US in a car',
+                    correctAnswer: true
+                  },
+                  {
+                    title: 'Applicant made no false representation of him/herself',
+                    correctAnswer: true
+                  },
+                  {
+                    title: 'All of the above',
+                    correctAnswer: true
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: 'Self-petition for an immigrant who has suffered "battery of extreme cruelty" by USC or LPR spouse, parent, or child 21+',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'T VISA',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'I-130',
+                    correctAnswer: true
+                  },
+                  {
+                    title: 'I-360',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'I-245',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: 'Police reports are required to apply for I-360 VAWA?',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'True',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'False',
+                    correctAnswer: true
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: 'If the applicant is divorced, can they apply for I-360 VAWA?',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'Yes, if applicant still lives with the spouse that divorced/abuses them',
+                    correctAnswer: false
+                  },
+                  {
+                    title: "No, because you need your spouse's approval for the process",
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'Yes, if the applicant has a child with the spouse there is an exception',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'Yes, if the divorce is less than 2 years ago and the applicant has no remarried',
+                    correctAnswer: true
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: 'This VISA allows victims of certain crimes who assist in the investigation/prosecution of a crime to gain lawful status',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'K VISA',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'U VISA',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'F VISA',
+                    correctAnswer: true
+                  },
+                  {
+                    title: 'T VISA',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: 'This VISA is for victims of human trafficking - it includes some types of sex trafficking and forced labor',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'G VISA',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'U VISA',
+                    correctAnswer: true
+                  },
+                  {
+                    title: 'T VISA',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'P VISA',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: 'How long is the U VISA or T VISA issued for?',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: '2 years',
+                    correctAnswer: false
+                  },
+                  {
+                    title: '3 years',
+                    correctAnswer: false
+                  },
+                  {
+                    title: '4 years',
+                    correctAnswer: false
+                  },
+                  {
+                    title: '5 years',
+                    correctAnswer: true
+                  }
+                ]
+              }
+            ]
+          },
+
+          'pageContentSpanish': 
+          {
+            'title': 'Quiz (I): introducción a la legislación de inmigración',
+            'quizItems': 
+            [
+              {
+                type: 'Single selection',
+                title: '¿Lawful Permanent Residency (LPR) es el equivalente de tener una Green Card?',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'Verdadero',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'Falso',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: '¿Después de cuántos años puede un residente permanente convertirse en ciudadano legal?',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: '2',
+                    correctAnswer: false
+                  },
+                  {
+                    title: '3 o 5 (depende)',
+                    correctAnswer: false
+                  },
+                  {
+                    title: '5',
+                    correctAnswer: false
+                  },
+                  {
+                    title: '7',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: '¿Qué significa AOS?',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'Accomodation of Standing',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'Adjustment of Status',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'Adjustment of Standing',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'Authorization of Status',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Writing',
+                title: '¿Qué significa CP?',
+                selectedOption: ''
+              },
+              {
+                type: 'Single selection',
+                title: '¿Cuál es la principal diferencia entre el AM y el PC?',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'AOS aplica dentro de US, CP aplica fuera de US',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'AOS aplica fuera de US, CP aplica dentro de US',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Multiple selection',
+                title: '¿Qué es waive through?',
+                selectedOption: [],
+                options:
+                [
+                  {
+                    title: 'El funcionario de inmigración "eximió" al solicitante de pasar por el punto de inspección',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'El solicitante entró a US en coche',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'El solicitante no ha hecho ninguna declaración falsa sobre sí mismo',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'Todas las anteriores',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: 'Autopetición para un inmigrante que haya sufrido "maltrato de extrema crueldad" por parte de su cónyuge, padre o hijo mayor de 21 años (USC o LPR)',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'T VISA',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'I-130',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'I-360',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'I-245',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: '¿Se necesitan informes policiales para solicitar la I-360 VAWA?',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'Verdadero',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'Falso',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: 'Si el solicitante está divorciado, ¿puede solicitar la I-360 VAWA?',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'Sí, si el solicitante sigue viviendo con el cónyuge que se divorció/abusa de él',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'No, porque necesitas la aprobación del cónyuge para el proceso',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'Sí, si el solicitante tiene un hijo con el cónyuge hay una excepción',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'Sí, si el divorcio se produjo hace menos de 2 años y el solicitante no se ha vuelto a casar',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: 'Este visado permite a las víctimas de determinados delitos que colaboran en la investigación o el enjuiciamiento de un delito obtener un estatuto legal',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'K VISA',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'U VISA',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'F VISA',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'T VISA',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: 'Este visado está destinado a las víctimas de la trata de seres personas, incluidos algunos tipos de tráfico sexual y trabajos forzados',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: 'G VISA',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'U VISA',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'T VISA',
+                    correctAnswer: false
+                  },
+                  {
+                    title: 'P VISA',
+                    correctAnswer: false
+                  }
+                ]
+              },
+              {
+                type: 'Single selection',
+                title: '¿Por cuánto tiempo se expide una U VISA o T VISA?',
+                selectedOption: '',
+                options:
+                [
+                  {
+                    title: '2 años',
+                    correctAnswer: false
+                  },
+                  {
+                    title: '3 años',
+                    correctAnswer: false
+                  },
+                  {
+                    title: '4 años',
+                    correctAnswer: false
+                  },
+                  {
+                    title: '5 años',
+                    correctAnswer: false
+                  }
+                ]
+              }
+            ]
+          },
+        }
       }
     }),
 
@@ -967,8 +1480,8 @@
         }
       },
 
-      openTest(testID){
-        alert(testID)
+      openQuizComponent(quizID){
+        this.$root.$emit('openQuizComponent', this.quizContent[quizID], this.controlVariables.currentLanguage);
       }
     },
 
@@ -979,10 +1492,10 @@
     mounted: function () { 
       this.$root.$on('switchLanguage', (newLanguage) => {
         this.controlVariables.currentLanguage = newLanguage;
-      })
+      });
       this.$root.$on('navigationBarDialog', (navigationBarDialog) => {
         this.controlVariables.navigationBarDialog = navigationBarDialog;
-      })
+      });
     }
   }
 </script>
